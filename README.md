@@ -20,26 +20,6 @@ NoteCraft is a dynamic note-taking and collaboration platform built on Next.js, 
 - **Cover Images**: Customize your notes with cover images for a personal touch.
 - **Recover Deleted Files**: Easily recover accidentally deleted files to prevent data loss.
 
-## Getting Started
-
-To start using NoteCraft, follow these steps:
-
-1. **Installation**: Clone the repository and set up the required dependencies.
-
-2. **Configuration**: Configure your integration with [Convex](https://www.convex.dev), [Clerk](https://dub.sh/7gFtfQb), [Edgestore](https://edgestore.dev), and [Trunk](https://tinyurl.com/trunkcheck) services as needed.
-
-3. **Authentication**: Set up user authentication and security measures as per your requirements.
-
-4. **File Management**: Implement file upload, deletion, and replacement functionality.
-
-5. **Customization**: Customize your NoteCraft instance, including icons, cover images, and landing pages.
-
-6. **Deployment**: Deploy your NoteCraft instance using Next.js on your preferred hosting platform.
-
-
-## Bug Reporting
-
-If you encounter any issues or have suggestions for improvement, please report them by opening an issue on our [GitHub Issues](https://github.com/Mohit-Mehra/NoteCraft/issues) page.
 
 ## Contact
 
