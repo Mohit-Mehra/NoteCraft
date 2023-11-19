@@ -1,6 +1,24 @@
 import { v } from "convex/values"
 import { mutation, query } from "./_generated/server";
 
+export const archive = mutation({
+    args: { id: v.id("documents") },
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity()
+        if (!identity) {
+            throw new Error("Not Authenticated")
+        }
+
+        const userId = identity.subject
+
+        const existingDocument = await ctx.db.get(args.id)
+
+        if (!existingDocument) {
+            throw new Error("Not Found")
+        }
+    }
+})
+
 export const getSidebar = query({
     args: {
         parentDocument: v.optional(v.id("documents"))
