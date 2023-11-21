@@ -99,3 +99,51 @@ export const create = mutation({
         return document
     }
 })
+
+export const getTrash = query({
+    handler: async (ctx) => {
+        const identity = await ctx.auth.getUserIdentity()
+
+        if (!identity) {
+            throw new Error("Not Authenticated")
+        }
+
+        const userId = identity.subject
+
+        const documents = await ctx.db
+            .query("documents")
+            .withIndex("by_user", (q) => q.eq("userId", userId))
+            .filter((q) =>
+                q.eq(q.field("isArchived"), true)
+            )
+            .order("desc")
+            .collect()
+
+        return documents
+    }
+})
+
+export const restore = mutation({
+    args: { id: v.id("documents") },
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity()
+
+        if (!identity) {
+            throw new Error("Not Authenticated")
+        }
+
+        const userId = identity.subject
+
+        const existingDocument = await ctx.db.get(args.id)
+
+        if (!existingDocument) {
+            throw new Error("Not found")
+        }
+
+        if(existingDocument.userId !== userId){
+            throw new Error("Unauthorized")
+        }
+
+        
+    }
+})
