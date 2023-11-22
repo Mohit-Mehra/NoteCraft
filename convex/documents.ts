@@ -1,6 +1,6 @@
 import { v } from "convex/values"
 import { mutation, query } from "./_generated/server";
-import { Id } from "./_generated/dataModel";
+import { Doc, Id } from "./_generated/dataModel";
 
 export const archive = mutation({
     args: { id: v.id("documents") },
@@ -140,10 +140,22 @@ export const restore = mutation({
             throw new Error("Not found")
         }
 
-        if(existingDocument.userId !== userId){
+        if (existingDocument.userId !== userId) {
             throw new Error("Unauthorized")
         }
 
-        
+        const options: Partial<Doc<"documents">> = {
+            isArchived: false
+        }
+
+        if (existingDocument.parentDocument) {
+            const parent = await ctx.db.get(existingDocument.parentDocument)
+            if (parent?.isArchived) {
+                options.parentDocument = undefined
+            }
+        }
+        await ctx.db.patch(args.id, options)
+
+        return existingDocument
     }
 })
