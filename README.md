@@ -25,7 +25,3 @@ NoteCraft is a dynamic note-taking and collaboration platform built on Next.js, 
 
 For inquiries, support, or collaboration opportunities, you can reach us at info.mohitverse@gmail.com.
 
-
----
-
-Thank you for choosing NoteCraft, the real-time note-taking and collaboration platform. We look forward to enhancing your note-taking experience and productivity.
