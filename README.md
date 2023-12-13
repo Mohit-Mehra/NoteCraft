@@ -4,6 +4,7 @@
 
 NoteCraft is a dynamic note-taking and collaboration platform built on Next.js, offering a seamless experience for your note-taking needs. Whether you're capturing ideas, working on projects, or collaborating with a team, NoteCraft provides a feature-rich environment to streamline your workflow.
 
+## [Live Demo ](https://note-craft-opal.vercel.app/)
 
 ## Key Features
 
